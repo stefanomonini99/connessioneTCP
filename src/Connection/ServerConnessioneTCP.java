@@ -9,15 +9,9 @@
  */
 package Connection;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.io.*;
+import java.net.*;
+import java.util.*;
 
 public class ServerConnessioneTCP {
 
@@ -42,6 +36,7 @@ public class ServerConnessioneTCP {
                 System.out.println("Connessione stabilita!");
                 System.out.println("Socket server: " + connection.getLocalSocketAddress());
                 System.out.println("Socket client: " + connection.getRemoteSocketAddress());
+                
                 //leggo il messaggio inviato dal client attraverso il socket e stampo il messaggio arrivato in output
                 BufferedReader read = new BufferedReader(new InputStreamReader(connection.getInputStream()));
                 String a = read.readLine();

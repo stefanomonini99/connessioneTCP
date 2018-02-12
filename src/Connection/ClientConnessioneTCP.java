@@ -13,9 +13,7 @@ package Connection;
 
 import java.io.*;
 import static java.lang.System.in;
-import java.net.Socket;
-import java.net.UnknownHostException;
-import java.net.ConnectException;
+import java.net.*;
 
 public class ClientConnessioneTCP {
     /**
@@ -39,10 +37,12 @@ public class ClientConnessioneTCP {
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             String input = reader.readLine();
             reader.close();
+            
             //scrivo sul buffer di output e quindi sul socket la stringa inserita da tastiera
             BufferedWriter out = new BufferedWriter(new OutputStreamWriter(connection.getOutputStream()));
-            out.write(input+ "\n");
-            out.flush();
+            out.write(input+ "\n"); //se non viene inserito non legge il buffer e quindi non comunicano correttamente
+            out.flush();//svuolta l'area di memoria e la spedisce a destinazione
+            
             //leggo il messaggio di conferma che mi è arrivato dal server e lo stampo
             BufferedReader reade = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             String b = reade.readLine();
